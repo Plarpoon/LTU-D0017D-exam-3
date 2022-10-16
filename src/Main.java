@@ -14,6 +14,7 @@
  */
 
 import java.util.Scanner;
+import java.util.Random;
 
 class Main {
   final static String GAME_OVER = "Game Over!";
@@ -22,9 +23,10 @@ class Main {
   final static int MAX = 6;
 
   public static int RANDOM_NUMBER_GENERATOR() { // Generates a random number between 1 and 6
-    double r = Math.random();
-    int randomNum = (int) (r * (MAX - MIN)) + MIN;
-    return randomNum;
+    Random r = new Random();
+    int randomNum = r.nextInt(MAX - MIN);
+    int result = randomNum + MIN;
+    return result;
   }
 
   public static void main(String[] args) {
@@ -46,21 +48,29 @@ class Main {
         case 'q':
           System.out.println(GAME_OVER);
           System.exit(0);
+          break;
         case 'Q':
           System.out.println(GAME_OVER);
           System.exit(0);
+          break;
         case '1':
           dice[0] = RANDOM_NUMBER_GENERATOR();
+          System.out.println("random number " + dice[0]); // TODO: DEBUG
           missing_dice[0] = true;
           flag = false;
+          break;
         case '2':
           dice[1] = RANDOM_NUMBER_GENERATOR();
+          System.out.println("random number " + dice[1]); // TODO: DEBUG
           missing_dice[1] = true;
           flag = false;
+          break;
         case '3':
           dice[3] = RANDOM_NUMBER_GENERATOR();
+          System.out.println("random number " + dice[2]); // TODO: DEBUG
           missing_dice[2] = true;
           flag = false;
+          break;
         default:
           System.out.println("Invalid input! Type either 1, 2, 3 or q/Q");
       }
@@ -103,8 +113,9 @@ class Main {
         lose_counter++; // lose_counter = lose_counter + 1;
       }
       System.out
-          .println(dice[0] + " " + dice[1] + " " + dice[2] + " sum: " + result + "#win: " + win_counter + " # loss: "
+          .println(dice[0] + " " + dice[1] + " " + dice[2] + " sum: " + result + "#win: " + win_counter + " #loss: "
               + lose_counter);
+      System.out.println("vector length " + dice.length); // TODO: DEBUG
       for (int i = dice.length; i > 0; i--) {
         dice[i] = 0; // reset dice
       }
