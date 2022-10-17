@@ -81,12 +81,14 @@ class Main {
 
       if (result == VICTORY) {
         win_counter++; // win_counter = win_counter + 1;
+        System.out
+            .println(dice[0] + " " + dice[1] + " " + dice[2] + " sum: " + result + "#win: " + win_counter + " #loss: "
+                + lose_counter);
+        System.out.println("Next round!");
         for (int i = dice.length - 1; i >= 0; i--) {
           dice[i] = 0; // reset dice
         }
-        System.out
-            .println(dice[0] + " " + dice[1] + " " + dice[2] + " sum: " + result + "#win: " + win_counter + " # loss: "
-                + lose_counter);
+        flag = true;
       } else {
         switch (dice[0]) { // Check if dice 1 is missing
           case 0:
@@ -111,15 +113,20 @@ class Main {
         }
 
         // If all dices are present, then the player loses
-        if (missing_dice[0] == true && missing_dice[1] == true && missing_dice[2] == true) {
+        if (missing_dice[0] == false && missing_dice[1] == false && missing_dice[2] == false) {
           lose_counter++; // lose_counter = lose_counter + 1;
+          System.out
+              .println(dice[0] + " " + dice[1] + " " + dice[2] + " sum: " + result + "#win: " + win_counter + " #loss: "
+                  + lose_counter);
+          System.out.println("Next round!");
           for (int i = dice.length - 1; i >= 0; i--) {
             dice[i] = 0; // reset dice
           }
+        }else{
+          System.out
+          .println(dice[0] + " " + dice[1] + " " + dice[2] + " sum: " + result + "#win: " + win_counter + " #loss: "
+              + lose_counter);
         }
-        System.out
-            .println(dice[0] + " " + dice[1] + " " + dice[2] + " sum: " + result + "#win: " + win_counter + " #loss: "
-                + lose_counter);
         flag = true;
       }
     }
