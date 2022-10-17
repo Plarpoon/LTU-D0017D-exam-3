@@ -57,19 +57,16 @@ class Main {
             System.exit(0);
           case '1':
             dice[0] = RANDOM_NUMBER_GENERATOR(MIN, MAX);
-            System.out.println("random number " + dice[0]); // TODO: DEBUG
             missing_dice[0] = true;
             flag = false;
             break;
           case '2':
             dice[1] = RANDOM_NUMBER_GENERATOR(MIN, MAX);
-            System.out.println("random number " + dice[1]); // TODO: DEBUG
             missing_dice[1] = true;
             flag = false;
             break;
           case '3':
             dice[2] = RANDOM_NUMBER_GENERATOR(MIN, MAX);
-            System.out.println("random number " + dice[2]); // TODO: DEBUG
             missing_dice[2] = true;
             flag = false;
             break;
@@ -122,10 +119,10 @@ class Main {
           for (int i = dice.length - 1; i >= 0; i--) {
             dice[i] = 0; // reset dice
           }
-        }else{
+        } else {
           System.out
-          .println(dice[0] + " " + dice[1] + " " + dice[2] + " sum: " + result + "#win: " + win_counter + " #loss: "
-              + lose_counter);
+              .println(dice[0] + " " + dice[1] + " " + dice[2] + " sum: " + result + "#win: " + win_counter + " #loss: "
+                  + lose_counter);
         }
         flag = true;
       }
