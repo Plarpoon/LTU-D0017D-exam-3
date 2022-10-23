@@ -5,9 +5,12 @@
  * A program that simulates the dice game 12
  * ===============================================================
  * Pseudocode steps:
- * 1. XXXX
- * 2. XXXX
- * 3. XXXX
+ * 1. Defining all the variables
+ * 2. Create a global loop that will run the game until the user wants to stop
+ * 3. Switch to determine which dice to roll
+ * 4. Be sure to put flags to see which dice hasn't been rolled yet
+ * 5. Print the results
+ * 6. Zero the counters and restart the random number generator
  * ===============================================================
  * Alessandro Suha
  * alesuh-1
