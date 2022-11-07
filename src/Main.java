@@ -29,26 +29,39 @@ class Main {
 
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
-    char input;
+    char input = '0';
     boolean flag = true;
     int[] dice = new int[] { 0, 0, 0 };
     int result;
     int win_counter = 0;
     int lose_counter = 0;
-    boolean[] missing_dice = new boolean[3];
+    boolean[] missing_dice = { true, true, true };
 
     final int MIN = 1;
     final int MAX = 6;
     final String GAME_OVER = "Game Over!";
+    final String ALREADY_ROLLED = "You have already rolled this dice!";
     final int VICTORY = 12;
 
     System.out.println("Welcome to the game 12. You must roll 1-3 dice and try to get the sum 12\n...");
 
     while (true) {
-
       while (flag) {
-        System.out.print("Enter which dice you want to roll [1,2,3] (exit with q): ");
-        input = sc.next().charAt(0);
+
+        while (true) {
+          System.out.print("Enter which dice you want to roll [1,2,3] (exit with q): ");
+          input = sc.next().charAt(0);
+          if (input == '1' && missing_dice[0] == false)
+            System.out.println(ALREADY_ROLLED);
+          else if (input == '2' && missing_dice[1] == false)
+            System.out.println(ALREADY_ROLLED);
+          else if (input == '3' && missing_dice[2] == false)
+            System.out.println(ALREADY_ROLLED);
+          else {
+            break;
+          }
+        }
+
         switch (input) { // Roll dice
           case 'q':
             System.out.println(GAME_OVER);
@@ -87,6 +100,7 @@ class Main {
         System.out.println("Next round!");
         for (int i = dice.length - 1; i >= 0; i--) {
           dice[i] = 0; // reset dice
+          missing_dice[i] = true; // reset flags
         }
         flag = true;
       } else {
@@ -121,6 +135,7 @@ class Main {
           System.out.println("Next round!");
           for (int i = dice.length - 1; i >= 0; i--) {
             dice[i] = 0; // reset dice
+            missing_dice[i] = true; // reset flags
           }
         } else {
           System.out
